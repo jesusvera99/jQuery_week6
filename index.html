@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery UI Assignment - JV</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="jquery-ui.min.css">
+    <script src="external/jquery/jquery.js"></script>
+    <script src="jquery-ui.min.js"></script>
+
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Advanced jQuery Assignment</h1>
+
+        <a href="#" title="Thanks for hovering" class="tooltip">Hover here to discover your first task</a>
+
+        <div id="accordion">
+            <h3>Task 1</h3>
+            <div>
+                <p>Please select a date in the calendar for an appointment.</p>
+            </div>
+            <h3>Task 2</h3>
+            <div>
+                <p>Please click the Animate Button at the bottom of the page</p>
+            </div>
+        </div>
+
+        <div id="datepicker"></div>
+        <h2 id="dateText"></h2>
+
+
+        <button id="animateBtn">Animate</button>
+        <div id="element"></div>
+
+
+
+    </div>
+
+
+
+
+    <script>
+
+        // Tool Picker Script Here
+        $("[title]").tooltip({
+            position: {
+                my: "left top",
+                at: "right top"
+            },
+            tooltipClass: "my-tooltip" // Add custom CSS class
+        });
+
+        // Customizing tooltip content:
+        $("[title]").tooltip({
+            content: function () {
+                return $(this).prop("title") + " - Click through the accordion for further instruction!";
+            }
+        });
+
+
+        // Accordion Script Here
+        $("#accordion").accordion({
+            collapsible: true, // Allow all sections to be closed
+            active: false,      // Start with all sections closed
+            heightStyle: "content" // Adjust height based on content
+        });
+
+        //Date Picker Script Here 
+        $("#datepicker").datepicker({
+            dateFormat: "mm/dd/yy", // Customize date format
+            showButtonPanel: true, // Show "Today" and "Done" buttons
+            changeMonth: true,      // Allow month selection
+            changeYear: true,       // Allow year selection
+            onSelect: function (dateText, inst) {
+                console.log("Date selected:", dateText);
+                // Perform actions with the selected date
+
+                document.getElementById("dateText").innerText = ("You have selected " + dateText + " as your appointment date."
+                )
+            }
+        });
+
+        // Setting a specific date programmatically:
+        $("#datepicker").datepicker("setDate", "03/02/2025");
+
+        // Disabling specific dates:
+        $("#datepicker").datepicker("option", "beforeShowDay", function (date) {
+            let day = date.getDay();
+            return [(day != 0 && day != 6), ""]; // Disable weekends (0 = Sunday, 6 = Saturday)
+        });
+
+
+
+
+        $("#animateBtn").click(function () {
+            $("#element").animate({
+                left: '250px',  // Move to the right
+                opacity: 1,  // Reduce opacity
+                height: '150px',  // Increase height
+                width: '150px'  // Increase width
+            }, 1000, "easeOutBounce"); // Animation duration (1 second)
+        });
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Roboto, sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 3em;
+}
+.container h1 {
+  margin: 1em 0 0 0;
+}
+.container .tooltip {
+  font-size: 2em;
+  text-decoration: none;
+  font-weight: bolder;
+  color: cadetblue;
+  margin: 1em 0 1em 0;
+}
+.container #accordion {
+  margin: 0 0 1em 0;
+}
+.container #datepicker {
+  margin: 1em 0 1em 0;
+}
+.container h2 {
+  margin: 2em;
+}
+.container button {
+  background-color: slategray;
+  border: none;
+  color: beige;
+  padding: 15px 32px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  margin: 1em;
+}
+.container button:hover {
+  cursor: pointer;
+  opacity: 80%;
+}
+.container #element {
+  width: 100px;
+  height: 100px;
+  background-color: slategray;
+  opacity: 0;
+  margin: 1em;
+}/*# sourceMappingURL=style.css.map */
